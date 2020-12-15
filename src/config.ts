@@ -224,6 +224,10 @@ const notifications = {
 		),
 		username: envOrString(process.env.EMAIL_USERNAME)
 	},
+	firebase: {
+		key: envOrString(process.env.FCM_KEYPAIR)
+		//TODO: enter firebaseConfig parameters here 
+	},
 	mqtt: {
 		broker: envOrString(process.env.MQTT_BROKER_ADDRESS),
 		clientId: envOrString(process.env.MQTT_CLIENT_ID),

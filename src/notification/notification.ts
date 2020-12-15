@@ -4,6 +4,7 @@ import {playSound} from './sound';
 import {sendDesktopNotification} from './desktop';
 import {sendDiscordMessage} from './discord';
 import {sendEmail} from './email';
+import {sendFirebaseMessage} from './firebase';
 import {sendMqttMessage} from './mqtt';
 import {sendPagerDutyNotification} from './pagerduty';
 import {sendPushbulletNotification} from './pushbullet';
@@ -16,6 +17,10 @@ import {sendTwilioMessage} from './twilio';
 import {sendTwitchMessage} from './twitch';
 
 export function sendNotification(link: Link, store: Store) {
+	// Top priority
+	var fcmPromise = sendFirebaseMessage(link,store);
+	console.log("sent firebase message");
+
 	// Priority
 	playSound();
 	sendDiscordMessage(link, store);
@@ -33,4 +38,6 @@ export function sendNotification(link: Link, store: Store) {
 	sendTweet(link, store);
 	sendTwilioMessage(link, store);
 	sendTwitchMessage(link, store);
+
+	return fcmPromise;
 }
