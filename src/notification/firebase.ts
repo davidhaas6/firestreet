@@ -1,24 +1,8 @@
 import { Link, Store } from '../store/model';
 import { Print, logger } from '../logger';
-import { config } from '../config';
+// import { config } from '../config';
 import * as admin from 'firebase-admin';
 
-
-
-// const firebaseConfig = {
-//     //TODO: move these to the dotenv file
-//     apiKey: "AIzaSyCnGa7tlfHZeSXd_SJcoFyS-_Pr-5FJy1o",
-//     authDomain: "restock-a7997.firebaseapp.com",
-//     projectId: "restock-a7997",
-//     storageBucket: "restock-a7997.appspot.com",
-//     messagingSenderId: "143759888462",
-//     appId: "1:143759888462:web:cb3d450cac474cac7f331f",
-//     measurementId: "G-753WKBDGLW"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-
-// const messaging = firebase.messaging();
 
 var serviceAccount = require("../../fcmKey.json");
 
@@ -27,15 +11,6 @@ admin.initializeApp({
     //   databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
 });
 
-
-//   const twitter = config.notifications.twitter;
-
-// const client = new Twitter({
-// 	access_token_key: twitter.accessTokenKey,
-// 	access_token_secret: twitter.accessTokenSecret,
-// 	consumer_key: twitter.consumerKey,
-// 	consumer_secret: twitter.consumerSecret
-// });
 
 export function sendFirebaseMessage(link: Link, store: Store) {
     logger.debug('↗ sending firebase cloud message');
