@@ -37,5 +37,9 @@ COPY web/ web/
 COPY package.json package.json
 COPY version.txt version.txt
 
+COPY fcmKey.json fcmKey.json
+COPY dotenv dotenv
+
+
 ENTRYPOINT ["npm", "run"]
 CMD ["start:production"]
